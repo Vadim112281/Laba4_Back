@@ -1,0 +1,12 @@
+{{> header}}
+
+<section class="card">
+  <h2>Оберіть місто:</h2>
+  <ul class="city-list">
+    {{#each cities}}
+      <li><a href="/weather/{{this}}">{{this}}</a></li>
+    {{/each}}
+  </ul>
+</section>
+
+{{> footer}}

@@ -1,0 +1,20 @@
+{{> header}}
+
+<section class="card">
+  <h2>Погода</h2>
+
+  {{#if error}}
+    <p class="error">{{error}}</p>
+  {{else}}
+    <div class="weather-info">
+      <h3>{{city}}</h3>
+      <p>🌡 Температура: <strong>{{temp}}°C</strong></p>
+      <p>📝 Опис: {{description}}</p>
+      <img src="{{icon}}" alt="Іконка погоди">
+    </div>
+    <a class="back-link" href="/">⬅ Назад до списку міст</a>
+
+  {{/if}}
+</section>
+
+{{> footer}}
