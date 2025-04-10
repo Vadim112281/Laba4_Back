@@ -1,4 +1,4 @@
-{{> header}}
+{{!-- {{> header}}
 
 <section class="card">
   <h2>Оберіть місто:</h2>
@@ -9,4 +9,39 @@
   </ul>
 </section>
 
+{{> footer}} --}}
+
+
+{{> header}}
+
+<section class="card">
+  <h2>Оберіть місто:</h2>
+  <ul class="city-list">
+    {{#each cities}}
+      <li><a href="/weather/{{this}}">{{this}}</a></li>
+    {{/each}}
+  </ul>
+
+  <br />
+
+  <button onclick="getLocation()" class="location-btn">📍 Погода за моїм місцезнаходженням</button>
+</section>
+
+<script>
+  function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+        window.location.href = `/weather/?lat=${lat}&lon=${lon}`;
+      }, function (error) {
+        alert("⚠️ Не вдалося отримати геолокацію: " + error.message);
+      });
+    } else {
+      alert("Ваш браузер не підтримує геолокацію.");
+    }
+  }
+</script>
+
 {{> footer}}
+
